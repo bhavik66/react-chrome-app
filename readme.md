@@ -15,7 +15,7 @@ This is a Chrome extension built using Vite, React, TypeScript, Material-UI (Mui
 1. Clone the repository:
 
    ```shell
-   git clone <repository-url>
+   git clone git@github.com:bhavik66/react-chrome-app.git
    ```
 
 2. Install the dependencies:
