@@ -2,11 +2,10 @@ import React from 'react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { createTheme } from './theme';
 import { Main } from './views';
-import { worker } from './mocks/browser';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
-worker.start();
+import './mocks/handlers';
 
 // Create a client
 const queryClient = new QueryClient();

@@ -3,16 +3,17 @@ import { CardActions, CardContent, Stack } from '@mui/material';
 import * as s from './styles';
 import { dishIcon } from '../../assets';
 import Icon from '../Icon';
+import { getDifficultyText } from '../../utils';
 
 export interface RecipeCardProps {
   recipe: string;
-  fullRecipeWebsite: string;
-  difficulty: string;
+  fullRecipeWebsite?: string;
+  difficulty: number;
 }
 
 const RecipeCard: React.FC<RecipeCardProps> = ({
   recipe,
-  fullRecipeWebsite,
+  // fullRecipeWebsite = 'https://google.com',
   difficulty,
 }) => {
   return (
@@ -22,12 +23,12 @@ const RecipeCard: React.FC<RecipeCardProps> = ({
           <Stack direction={'row'} spacing={1} mb={2}>
             <Icon icon={dishIcon} />
             <s.RecipeDifficultyText>
-              Difficulty: {difficulty}
+              Difficulty: {getDifficultyText(difficulty)}
             </s.RecipeDifficultyText>
           </Stack>
           <s.RecipeContentText>{recipe}</s.RecipeContentText>
         </CardContent>
-        <CardActions sx={{ justifyContent: 'center', pt: 0, pb: 1.25 }}>
+        {/* <CardActions sx={{ justifyContent: 'center', pt: 0, pb: 1.25 }}>
           <s.Button
             variant="contained"
             disableElevation
@@ -36,7 +37,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({
           >
             View Full Recipe
           </s.Button>
-        </CardActions>
+        </CardActions> */}
       </s.Content>
     </s.Container>
   );

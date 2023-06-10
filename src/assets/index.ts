@@ -5,3 +5,7 @@ export { default as mediumButton } from './icons/btn_medium.svg';
 export { default as internetButton } from './icons/btn_internet.svg';
 export { default as spainFlag } from './icons/flag_spain.svg';
 export { default as searchIcon } from './icons/icon_search.svg';
+export { default as easyIcon } from './icons/icon_easy.svg';
+export { default as mediumIcon } from './icons/icon_medium.svg';
+export { default as hardIcon } from './icons/icon_hard.svg';
+export { default as backIcon } from './icons/icon_back.svg';

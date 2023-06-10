@@ -7,3 +7,5 @@ export { default as Icon } from './Icon';
 export { default as GradientText } from './GradientText';
 export { default as Loader } from './Loader';
 export { default as Error } from './Error';
+export { default as DetailView } from './DetailView';
+export { default as AddRecipeView } from './AddRecipeView';

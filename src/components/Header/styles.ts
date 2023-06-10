@@ -15,6 +15,9 @@ const Title = styled(Typography)`
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
+  flex-wrap: wrap;
+  flex-shrink: 1;
+  display: flex;
 `;
 
 const IconButton = styled(MuiIconButton)`

@@ -1,43 +1,43 @@
-import React from 'react';
-import {
-  Error,
-  Header,
-  InfoCard,
-  Loader,
-  RecipeCard,
-  Search,
-} from '../../components';
-import { useDishDetail } from '../../queries/dish';
-import { DishListItemType } from '../../types';
-
-import * as s from './styles';
+import { useRef, useState } from 'react';
+import { AddRecipeView, DetailView } from '../../components';
+import { Box } from '@mui/material';
+import Slide from '@mui/material/Slide';
 
 const Main = () => {
-  const { isLoading, mutate, data, isError } = useDishDetail();
+  const [openAddRecipe, setOpenAddRecipe] = useState(false);
+  const containerRef = useRef(null);
 
-  const handleSearchSelection = (value: DishListItemType) => {
-    mutate(value.id);
+  const handleAddRecipeView = () => {
+    setOpenAddRecipe(true);
+  };
+
+  const handleBack = () => {
+    setOpenAddRecipe(false);
   };
 
   return (
-    <s.Container>
-      <Search onSelect={handleSearchSelection} />
-      {isLoading ? (
-        <Loader />
-      ) : data ? (
-        <>
-          <Header title={data.title} social={data.social} />
-          <RecipeCard
-            recipe={data.recipe}
-            fullRecipeWebsite={data.fullRecipeWebsite}
-            difficulty={data.difficulty}
-          />
-          <InfoCard data={data.info} />
-        </>
-      ) : isError ? (
-        <Error />
-      ) : null}
-    </s.Container>
+    <Box ref={containerRef} position={'relative'}>
+      <DetailView onAddRecipe={handleAddRecipeView} />
+      <Slide
+        direction="left"
+        in={openAddRecipe}
+        container={containerRef.current}
+        mountOnEnter
+        unmountOnExit
+      >
+        <Box
+          sx={{
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+            top: 0,
+            right: 0,
+          }}
+        >
+          <AddRecipeView onBack={handleBack} />
+        </Box>
+      </Slide>
+    </Box>
   );
 };
 

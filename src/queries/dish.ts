@@ -1,13 +1,13 @@
 import { useMutation } from 'react-query';
 import queryAsync from '../network/apiClient';
-import { DishDetailType, DishListItemType } from '../types';
+import { DishDetailType } from '../types';
 
 const useSearchDish = () => {
-  return useMutation<DishListItemType[], unknown, string, unknown>(
+  return useMutation<DishDetailType[], unknown, void, unknown>(
     ['search-dish'],
-    (searchTerm) => {
-      return queryAsync<DishListItemType[]>({
-        path: `/api/search?q=${searchTerm}`, // Pass the search term as a query parameter
+    () => {
+      return queryAsync<DishDetailType[]>({
+        path: `/api/recipes`,
         type: 'GET',
       });
     }
@@ -19,11 +19,24 @@ const useDishDetail = () => {
     ['dish-details'],
     (id) => {
       return queryAsync<DishDetailType>({
-        path: `/api/dish/${id}`, // Pass the search term as a query parameter
+        path: `/api/recipes/${id}`,
         type: 'GET',
       });
     }
   );
 };
 
-export { useSearchDish, useDishDetail };
+const useAddDish = () => {
+  return useMutation<object, unknown, DishDetailType, unknown>(
+    ['dish-details'],
+    (data) => {
+      return queryAsync<object>({
+        path: `/api/recipes`,
+        type: 'POST',
+        data: { ...data },
+      });
+    }
+  );
+};
+
+export { useSearchDish, useDishDetail, useAddDish };

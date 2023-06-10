@@ -1,7 +1,7 @@
 import React from 'react';
 
 import * as s from './styles';
-import { Stack, Typography } from '@mui/material';
+import { Stack } from '@mui/material';
 import { InfoType } from '../../types';
 
 export interface GradientTextProps {
