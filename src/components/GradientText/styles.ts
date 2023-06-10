@@ -9,7 +9,7 @@ const Text = styled(Typography)<{
       ? 'linear-gradient(136.39deg, #2bf1e5 3.18%, #40e33d 102.04%)'
       : severity === 'medium'
       ? 'linear-gradient(136.39deg, #ffbf43 3.18%, #ff4869 102.04%)'
-      : severity === 'high'
+      : severity === 'hard'
       ? 'red'
       : 'white',
   WebkitBackgroundClip: 'text',

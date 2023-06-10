@@ -15,6 +15,7 @@ import { useSearchDish } from '../../queries/dish';
 
 import * as s from './styles';
 import { getDifficultyIcon, getDifficultyText } from '../../utils';
+import { DishDetailType } from '../../types';
 
 export interface SearchProps {
   onSelect: (id: any) => void;
@@ -34,7 +35,7 @@ const Search: React.FC<SearchProps> = ({ onSelect }) => {
       <Autocomplete
         autoFocus
         options={options}
-        getOptionLabel={(option) => option.name}
+        getOptionLabel={(option) => (option as DishDetailType).name}
         autoHighlight
         size="small"
         freeSolo
@@ -102,7 +103,7 @@ const Search: React.FC<SearchProps> = ({ onSelect }) => {
             </Stack>
           </Stack>
         )}
-        onChange={(event, value) => onSelect(value.id)}
+        onChange={(event, value) => onSelect((value as DishDetailType).id)}
       />
     </Box>
   );
